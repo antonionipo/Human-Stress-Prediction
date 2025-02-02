@@ -1,0 +1,30 @@
+Criar projeto de Predição de Stress Humano
+About Dataset
+“subreddit – post_id – sentence_range – text-label-confidence-social_timestamp” represents the titles for Stress.csv file.
+
+Stress detection is a challenging task, as there are so many words that can be used by people on their posts that can show whether a person is having psychological stress or not. look for datasets that you can use to train a machine learning model for stress detection.
+
+The dataset contains data posted on subreddits related to mental health. This dataset contains various mental health problems shared by people about their life. Fortunately, this dataset is labelled as 0 and 1, where 0 indicates no stress and 1 indicates stress.
+Predição de Stress Humano
+Neste projeto, deverá ser feita uma análise de sentimentos para avaliar se o texto apresenta o stress ou não.
+Análise Exploratória
+Foi escolhido do datset apenas três colunas, sendo elas:
+Subreddit: Comunidade de onde o texto foi retirado;
+Texto: Texto que será utilizado para detecção de stress;
+label: 1 se for pra stress, 0 caso contrário.
+Pela quatidade de labels, é possível ver que têm quase a mesma qualidade, ou seja, não há um desbalanceamento dos dados. [Gráfico de Número de texto com Stress, y=Quantidade, x=("Não", "Sim")]
+Por comunidade, veremos que as comunidade que tem mais textos tem a ver com relações, ansiedade e ptsd (stress pós-traumático). [Número de textos por comunidade, y=("ptsd", "assistance", "relationships", "survivorsofabuse", "domesticviolence", "anxiety", "homeless", "stress", "almosthomeless", "food_pantry"), x=Quantidade]
+Separando as comunidades por label, temos que algumas comunidades apresentam mais textos como stress do que outras, como ansiedade e ptsd, que apresnetam mais textos com stress. [Número de textos por comunidade de acordo com a label y1="sim", y2="não", y=("ptsd", "assistance", "relationships", "survivorsofabuse", "domesticviolence", "anxiety", "homeless", "stress", "almosthomeless", "food_pantry"), x=Quantidade]
+Comparando os wordclous entre textos com stress e sem, vemos que não há muito difrença nas palavras, apenas a palavra ansiedade que se tem no texto com stress. [Nuvem de palavras, Wordcloud do texto sem stress] [Nuvem de palavras, Wordcloud do texto com stress]
+Modelagem
+Depois de um pré-processamento, foi dividido o dataset em 70% de treino e 30% de teste, da qual se utilizou vários algoritmos de machine learning, da qual se obteve os seguintes resultados. [Tabelta por modelos de IA: Regressão Logística, KNN, SVM com Kernel Sigmoid, Naive Bayes (Multinominal), Árvore de decisão, Random Forest, Extra tree, Gradient Boosting, XGBoosting, Catbbost; e colunas com métricas: Acc, Pre, Rec, F1]
+Consideraçẽs Finais
+Comparando as métircas, podemos ver que:
+Comparando as métricas, podemos ver que os modelos com melhor perfomace foram Multinomial NB (naive bayes), SVM com kernel sigmoid, e o Catboost.
+Comparando o acertos que os modelos tiveram, podemos ver a partir desses gráficos, que o modelo Multinomial NB acerto um pouco mais de texto sem stress, entretanto errou mais texto com stress [Gráfico de barras empilhadas Class prediction error for multinominalNB (com stress e sem stress)] [Gráfico de barras empilhadas Class prediction error for SVC (com stress e sem stress)] [Gráfico de barras empilhadas Class prediction error for catboostclassifier (com stress e sem stress)]
+Fazer método embbeding na tokenização
+Fazer o cross-validation para comparar o resultado de varios testes
+Fazer uma maior investigação pra ver se existem termos que tem mais uma classe do que outro.
+Aplicar otimização de hiperparametros nos modelos que tiveram as melhores perfomaces.
+
+
